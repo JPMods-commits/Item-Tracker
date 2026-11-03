@@ -1,0 +1,45 @@
+plugins {
+    id 'fabric-loom' version "${loom_version}"
+}
+
+version = project.mod_version
+group = 'net.jpmods'
+base { archivesName = 'itemtracker-fabric-mc1.21.11' }
+
+repositories {
+    maven { url 'https://maven.terraformersmc.com/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+}
+
+tasks.withType(JavaCompile).configureEach { options.release = 21 }
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+jar {
+    from('LICENSE.txt')
+    from('NOTICE.txt')
+}
+
+// Client integration tests are a separate mod, excluded from the release JAR.
+fabricApi.configureTests {
+    createSourceSet = true
+    enableGameTests = false
+    enableClientGameTests = true
+    modId = 'itemtracker_testmod'
+    username = 'ItemTrackerTest'
+}
+sourceSets.gametest.java.setSrcDirs(['src/testmod/java'])
+sourceSets.gametest.resources.setSrcDirs(['src/testmod/resources'])
+loom.runs.clientGameTest {
+    jvmArguments.add('-Dfabric.client.gametest.disableNetworkSynchronizer=true')
+}

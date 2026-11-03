@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "itemtracker",
+  "version": "0.0.1",
+  "name": "Item Tracker",
+  "description": "Tracks players' Healing II potion throws, ender pearls and cobweb use. Configure both trackers through Mod Menu; bind toggles and counter resets in Minecraft Controls.",
+  "authors": ["JPMods"],
+  "license": "GPL-3.0-or-later",
+  "icon": "assets/itemtracker/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["net.jpmods.itemtracker.ItemTrackerClient"],
+    "modmenu": ["net.jpmods.itemtracker.config.ItemTrackerModMenu"]
+  },
+  "mixins": ["itemtracker.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.17.3",
+    "fabric-api": ">=0.141.3+1.21.11",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "modmenu": ">=17.0.0-beta.1"
+  }
+}

@@ -1,0 +1,11 @@
+Item Tracker 0.0.1
+JPMods, 2026
+
+Includes the PotionTracker and DiaSMPTracker logic from the supplied custom
+client source (2026-10-29 and 2026-10-30), distributed under the GNU General
+Public License, version 3 or any later version. Their original license notices
+are retained in the corresponding source files.
+
+The standalone Fabric integration, Mod Menu configuration, Minecraft Controls
+keybindings and additional death/respawn reset handling were added for Item
+Tracker. This distribution is licensed GPL-3.0-or-later; see LICENSE.txt.

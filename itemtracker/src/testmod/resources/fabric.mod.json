@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "itemtracker_testmod",
+  "version": "0.0.1",
+  "name": "Item Tracker integration tests",
+  "environment": "client",
+  "license": "GPL-3.0-or-later",
+  "entrypoints": {"fabric-client-gametest": ["net.jpmods.itemtracker.test.ItemTrackerGameTest"]},
+  "depends": {"itemtracker": "*", "fabric-client-gametest-api-v1": "*"}
+}
